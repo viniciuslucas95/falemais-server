@@ -1,0 +1,34 @@
+{
+  "name": "falemais-app-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app/index.js",
+  "scripts": {
+    "start": "NODE_ENV=prod node dist/app/index.js",
+    "dev": "NODE_ENV=dev ts-node-dev --respawn --transpile-only src/app/index.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "test": "jest --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.2.0",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.1",
+    "@types/pg": "^8.6.5",
+    "axios": "^0.27.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.3"
+  }
+}

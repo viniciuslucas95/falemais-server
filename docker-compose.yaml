@@ -1,0 +1,13 @@
+services:
+  falemais_postgres:
+    image: postgres
+    container_name: falemais_postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data/dev
+    volumes:
+      - ./tmp/database:/var/lib/postgresql/data/dev
+      - ./scripts:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432

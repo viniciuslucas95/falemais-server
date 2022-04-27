@@ -1,0 +1,7 @@
+# Environment
+.env
+tmp/database
+
+# Compiled output
+/dist
+/node_modules
