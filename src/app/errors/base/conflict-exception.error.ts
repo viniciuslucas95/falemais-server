@@ -1,4 +1,4 @@
-import { STATUS_CODE } from "../constants/status-code.constant"
+import { STATUS_CODE } from "../../constants/status-code.constant"
 import { HttpRequestException } from "./http-request-exception.error"
 
 export class ConflictException extends HttpRequestException {

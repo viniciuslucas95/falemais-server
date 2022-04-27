@@ -11,5 +11,5 @@ export interface TariffsRepository {
     find(): Promise<GetTariffDto[]>
     findOne(id: number): Promise<Omit<GetTariffDto, 'id'> | undefined>
     checkExistance(id: number): Promise<boolean>
-    checkTariffExistence(dto: CheckTariffDto): Promise<boolean>
+    checkTariffExistenceByDdd(dto: CheckTariffDto): Promise<boolean>
 }

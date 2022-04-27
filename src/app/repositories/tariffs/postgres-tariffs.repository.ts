@@ -23,13 +23,13 @@ export class PostgresTariffsRepository implements TariffsRepository {
     }
 
     async find(): Promise<GetTariffDto[]> {
-        const result = await client.query<GetTariffDto>(`SELECT id, origin_ddd, destiny_ddd, price_per_min FROM tariffs;`)
+        const result = await client.query<GetTariffDto>(`SELECT id, origin_ddd AS "originDdd", destiny_ddd AS "destinyDdd", price_per_min AS "pricePerMin" FROM tariffs;`)
 
         return result.rows
     }
 
     async findOne(id: number): Promise<Omit<GetTariffDto, 'id'> | undefined> {
-        const result = await client.query<Omit<GetTariffDto, 'id'>>("SELECT origin_ddd, destiny_ddd, price_per_min FROM tariffs WHERE id = $1 LIMIT 1;", [id])
+        const result = await client.query<Omit<GetTariffDto, 'id'>>(`SELECT origin_ddd AS "originDdd", destiny_ddd AS "destinyDdd", price_per_min AS "pricePerMin" FROM tariffs WHERE id = $1 LIMIT 1;`, [id])
 
         return result.rows[0]
     }
@@ -40,7 +40,7 @@ export class PostgresTariffsRepository implements TariffsRepository {
         return result.rows[0] ? true : false
     }
 
-    async checkTariffExistence(dto: CheckTariffDto): Promise<boolean> {
+    async checkTariffExistenceByDdd(dto: CheckTariffDto): Promise<boolean> {
         const result = await client.query('SELECT id FROM tariffs WHERE origin_ddd = $1 AND destiny_ddd = $2 LIMIT 1;', getDtoValues(dto))
 
         return result.rows[0] ? true : false

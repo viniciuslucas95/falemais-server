@@ -1,4 +1,4 @@
-import { BadRequestException } from "../../errors/bad-request-exception.error"
+import { BadRequestException } from "../../errors/base/bad-request-exception.error"
 
 export function validatePrice(price: any) {
     if (typeof price !== 'number') throw new BadRequestException('PriceMustBeANumber')

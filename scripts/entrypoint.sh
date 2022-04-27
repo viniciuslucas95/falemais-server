@@ -22,4 +22,5 @@ psql -U 'postgres' <<- EOSQL
 	updated_at TIMESTAMP DEFAULT NOW()
     );
     GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE public.tariffs TO dev;
+	GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO dev;
 EOSQL
