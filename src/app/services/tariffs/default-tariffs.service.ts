@@ -1,15 +1,16 @@
-import { CreationReturnDto } from "../dto/commons/creation-return.dto";
-import { CheckTariffDto } from "../dto/tariffs/check-tariff.dto";
-import { CreateTariffDto } from "../dto/tariffs/create-tariff.dto";
-import { GetTariffDto } from "../dto/tariffs/get-tariff.dto";
-import { UpdateTariffDto } from "../dto/tariffs/update-tariff.dto";
-import { ConflictException } from "../errors/base/conflict-exception.error";
-import { DddBadRequestException } from "../errors/ddd-bad-request-exception.error";
-import { TariffsRepository } from "../repositories/tariffs/tariffs.repository";
+import { CreationReturnDto } from "../../dto/commons/creation-return.dto";
+import { CheckTariffDto } from "../../dto/tariffs/check-tariff.dto";
+import { CreateTariffDto } from "../../dto/tariffs/create-tariff.dto";
+import { GetTariffDto } from "../../dto/tariffs/get-tariff.dto";
+import { UpdateTariffDto } from "../../dto/tariffs/update-tariff.dto";
+import { ConflictException } from "../../errors/base/conflict-exception.error";
+import { DddBadRequestException } from "../../errors/ddd-bad-request-exception.error";
+import { TariffsRepository } from "../../repositories/tariffs/tariffs.repository";
 import { TariffNotFoundException } from "./errors/tariff-not-found-exception.error";
+import { TariffsService } from "./tariffs.service";
 
-export class TariffsService {
-    constructor(private repository: TariffsRepository) { }
+export class DefaultTariffsService implements TariffsService {
+    constructor(public repository: TariffsRepository) { }
 
     async create(dto: CreateTariffDto): Promise<CreationReturnDto> {
         await this.checkTariffExistance({

@@ -21,6 +21,14 @@ psql -U 'postgres' <<- EOSQL
 	created_at TIMESTAMP DEFAULT NOW(),
 	updated_at TIMESTAMP DEFAULT NOW()
     );
+	CREATE TABLE plans (
+	id SMALLSERIAL PRIMARY KEY,
+	name varchar NOT NULL UNIQUE,
+    bonus INTEGER NOT NULL,
+	created_at TIMESTAMP DEFAULT NOW(),
+	updated_at TIMESTAMP DEFAULT NOW()
+    );
     GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE public.tariffs TO dev;
+    GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE public.plans TO dev;
 	GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO dev;
 EOSQL

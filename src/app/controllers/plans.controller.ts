@@ -1,12 +1,12 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { STATUS_CODE } from "../constants/status-code.constant";
-import { TariffsService } from "../services/tariffs/tariffs.service";
+import { PlansService } from "../services/plans/plans.service";
 import { idValidation } from "../validations/id.validation";
-import { tariffsCreationValidation } from "../validations/tariffs/tariffs-creation.validation";
-import { tariffsUpdateValidation } from "../validations/tariffs/tariffs-update.validation";
+import { plansCreationValidation } from "../validations/plans/plans-creation.validation";
+import { plansUpdateValidation } from "../validations/plans/plans-update.validation";
 
-export class TariffsController {
-    constructor(private service: TariffsService, public router: Router) {
+export class PlansController {
+    constructor(private service: PlansService, public router: Router) {
         this.setupPost()
         this.setupPatch()
         this.setupDelete()
@@ -15,7 +15,7 @@ export class TariffsController {
     }
 
     private setupPost() {
-        this.router.post('/', tariffsCreationValidation, async (req: Request, res: Response, next: NextFunction) => {
+        this.router.post('/', plansCreationValidation, async (req: Request, res: Response, next: NextFunction) => {
             try {
                 const result = await this.service.create(req.body)
                 res.status(STATUS_CODE.CREATED).json(result)
@@ -26,7 +26,7 @@ export class TariffsController {
     }
 
     private setupPatch() {
-        this.router.patch('/:id', idValidation, tariffsUpdateValidation, async (req: Request, res: Response, next: NextFunction) => {
+        this.router.patch('/:id', idValidation, plansUpdateValidation, async (req: Request, res: Response, next: NextFunction) => {
             try {
                 await this.service.update(parseInt(req.params.id), req.body)
                 res.sendStatus(STATUS_CODE.NO_CONTENT)

@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import { TariffsRouterFactory } from './factories/tariffs-router.factory'
 import { errorsHandler } from './middlewares/errors-handler.middleware'
+import { PlansRouterFactory } from './factories/plans-router.factory'
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ if (process.env.NODE_ENV === 'dev') {
 
 app.use(json())
 app.use('/tariffs', TariffsRouterFactory.create())
+app.use('/plans', PlansRouterFactory.create())
 app.use(errorsHandler)
 
 app.listen(port, () => {
