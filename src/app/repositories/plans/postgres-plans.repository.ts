@@ -1,5 +1,5 @@
 import { client } from "../../../configs/postgres.config";
-import { CreationReturnDto } from "../../dto/commons/creation-return.dto";
+import { CreationReturnDto } from "../../dto/common/creation-return.dto";
 import { CreatePlanDto } from "../../dto/plans/create-plan.dto";
 import { GetPlanDto } from "../../dto/plans/get-plan-dto";
 import { UpdatePlanDto } from "../../dto/plans/update-plan.dto";

@@ -1,4 +1,4 @@
-import { CreationReturnDto } from "../../dto/commons/creation-return.dto";
+import { CreationReturnDto } from "../../dto/common/creation-return.dto";
 import { CheckTariffDto } from "../../dto/tariffs/check-tariff.dto";
 import { CreateTariffDto } from "../../dto/tariffs/create-tariff.dto";
 import { GetTariffDto } from "../../dto/tariffs/get-tariff.dto";
