@@ -67,6 +67,8 @@ export class DefaultTariffsService implements TariffsService {
 
         if (!tariff) throw new TariffNotFoundException()
 
+        tariff.pricePerMin = parseFloat(tariff.pricePerMin as unknown as string)
+
         return tariff
     }
 
